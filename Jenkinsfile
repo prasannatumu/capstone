@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "rakeshkadam/capstone"
+        registry = "prateekjain/capstone"
         registryCredential = 'dockerhub'
         dockerImage = ''
     }
@@ -10,6 +10,7 @@ pipeline {
 		    stage('Lint HTML') {
 			    steps {
 				    sh 'tidy -q -e *.html'
+				    sh 'echo $USER'
 			    }
 		    }
         
@@ -27,7 +28,22 @@ pipeline {
                 script {
                     docker.withRegistry( '', registryCredential ) {
                     dockerImage.push()
+                        }
                     }
+                }
+            }
+            
+            stage('Configure and Build Kubernetes Cluster'){
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh 'ansible-playbook ./playbooks/create-cluster.yml'
+                    }
+                }
+            }
+            stage('Deploy Updated Image to Cluster'){
+                steps {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh 'sudo kubectl apply -f ./deployments'
                 }
             }
         }

@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: devops-capstone-deployment
+  labels:
+    app: devops-capstone
+spec:
+  strategy:
+    type: RollingUpdate
+  replicas: 4
+  selector:
+    matchLabels:
+      app: devops-capstone
+  template:
+    metadata:
+      labels:
+        app: devops-capstone
+    spec:
+      containers:
+        - name: devops-capstone
+          image: prateekjain/capstone:latest
+          ports:
+            - containerPort: 8765
