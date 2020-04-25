@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
         - name: devops-capstone
-          image: prateekjain/capstone:latest
+          image: rakeshkadam/capstone:latest
           ports:
             - containerPort: 8765

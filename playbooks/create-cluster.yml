@@ -62,7 +62,7 @@
         - debug: msg=" {{ existing_clusters.stdout }}"
         - name: Setup K8s-cluster with eksctl
           block:
-            - name: Setup clusters on 4 nodes
+            - name: Setup clusters on 2 nodes
               command: >
                 eksctl create cluster
                 --name capstone-project
