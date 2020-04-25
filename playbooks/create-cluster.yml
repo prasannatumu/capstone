@@ -62,19 +62,19 @@
       - debug: msg=" {{ existing_clusters.stdout }}"
       - name: Setup K8s-cluster with eksctl
         block:
-          - name: Setup clusters on 2 nodes
-            command: >
-              eksctl create cluster
-              --name capstone-project
-              --version {{ kubernetes_version }}
-              --region ap-southeast-1
-              --nodegroup-name worker-node
-              --node-type t2.micro
-              --nodes 2
-              --nodes-min 1
-              --nodes-max 2
-              --managed
-            become: no
+         - name: Setup clusters on 2 nodes
+              command: >
+                eksctl create cluster
+                --name capstone-project
+                --version {{ kubernetes_version }}
+                --region ap-south-1
+                --nodegroup-name worker-node
+                --node-type t2.micro
+                --nodes 2
+                --nodes-min 1
+                --nodes-max 2
+                --managed
+              become: no
           - name: Update kubeconfig
             command: aws eks --region ap-southeast-2 update-kubeconfig --name capstone-project
         when: "existing_clusters.stdout.find('No clusters found') != -1"
