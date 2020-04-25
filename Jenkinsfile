@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "rakeshkadam/capstone"
+        registry = "rakeshkadam/capstone-project"
         registryCredential = 'dockerhub'
         dockerImage = ''
     }
@@ -14,7 +14,7 @@ pipeline {
 			    }
 		    }
         
-        
+    
             stage('Building image') {
                 steps{
                 script {
@@ -43,7 +43,8 @@ pipeline {
             stage('Deploy Updated Image to Cluster'){
                 steps {
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'sudo kubectl apply -f ./deployments'
+                    sh 'sudo kubectl apply -f ./deployments/deployment.yml'
+					sh 'sudo kubectl apply -f ./deployments/load-balancer.yml'
                 }
             }
         }
