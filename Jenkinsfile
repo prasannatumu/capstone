@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "rakeshkadam/capstone"
+        registry = "prateekjain/capstone-project"
         registryCredential = 'dockerhub'
         dockerImage = ''
     }

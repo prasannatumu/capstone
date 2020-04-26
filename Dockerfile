@@ -1,5 +1,5 @@
-FROM httpd:latest
-MAINTAINER RakeshKadam
-COPY index.html /var/www/html/
-CMD [“/usr/sbin/httpd”, “-D”, “FOREGROUND”]
-EXPOSE 80
+FROM nginx
+
+RUN rm /usr/share/nginx/html/index.html
+
+COPY index.html /usr/share/nginx/html
