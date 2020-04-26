@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
         - name: capstone-project
-          image: prateekjain/capstone-project:16
+          image: rakeshkadam/capstone-project:16
           ports:
             - containerPort: 80
