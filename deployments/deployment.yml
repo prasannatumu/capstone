@@ -1,23 +1,23 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: capstone-project-rakesh
+  name: capstone-project-rakesh-final
   labels:
-    app: capstone-project-rakesh
+    app: capstone-project-rakesh-final
 spec:
   strategy:
     type: RollingUpdate
   replicas: 2
   selector:
     matchLabels:
-      app: capstone-project-rakesh
+      app: capstone-project-rakesh-final
   template:
     metadata:
       labels:
-        app: capstone-project-rakesh
+        app: capstone-project-rakesh-final
     spec:
       containers:
-        - name: capstone-project-rakesh
+        - name: capstone-project-rakesh-final
           image: rakeshkadam/capstone-project:16
           ports:
             - containerPort: 80
