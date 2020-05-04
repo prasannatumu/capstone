@@ -65,7 +65,7 @@
             - name: Setup clusters on 2 nodes
               command: >
                 eksctl create cluster
-                --name capstone-project-rakesh-final-1
+                --name capstone-project
                 --version {{ kubernetes_version }}
                 --region ap-southeast-2
                 --nodegroup-name worker-node
@@ -76,5 +76,5 @@
                 --node-ami auto
               become: no
             - name: Update kubeconfig
-              command: aws eks --region ap-southeast-2 update-kubeconfig --name capstone-project-rakesh-final-1
+              command: aws eks --region ap-southeast-2 update-kubeconfig --name capstone-project
           when: "existing_clusters.stdout.find('No clusters found') != -1"
