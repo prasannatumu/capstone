@@ -21,8 +21,6 @@ In this porject I hvae created a CICD pipeline as my Capstone project of the Uda
 * Deploy EKS cluster with Ansible playbook
 * Deplying Docker image to the cluster
 
-## Project Architecture
 
-![CI/CD Pipeline](https://raw.githubusercontent.com/prateekjaindev/Cloud-DevOps-Engineer-Capstone-Project/master/ScreenShots/CICI%20Pipeline.png)
 
 
